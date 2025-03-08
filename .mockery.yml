@@ -1,0 +1,63 @@
+log-level: "warn" # info, warn, debug, "" mean quiet
+with-expecter: True
+issue-845-fix: True
+resolve-type-alias: False
+disable-version-string: True
+outpkg: "mocker"
+dir: "mocker"
+
+packages:
+  github.com/shandysiswandi/goreng/clock:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/codec:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/config:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/emitter:
+    interfaces:
+      Emitter:
+        config:
+          filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/hash:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/jwt:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/messaging:
+    interfaces:
+      Client:
+        config:
+          filename: "mock_messaging_{{ .InterfaceName | snakecase }}.go"
+          mockname: "MockMessaging{{.InterfaceName}}"
+
+  github.com/shandysiswandi/goreng/storage:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/uid:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+  github.com/shandysiswandi/goreng/validation:
+    config:
+      all: True
+      filename: "mock_{{ .InterfaceName | snakecase }}.go"
+
+
